@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OnionArchitecture_CarBook.Domain.Entities
+{
+    public class Feature
+    {
+        public int FeatureId { get; set; }
+        public string Name { get; set; }
+        public List<CarFeature> CarFeatures { get; set; }
+    }
+}

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="OnionArchitecture_CarBook.Domain/OnionArchitecture_CarBook.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="OnionArchitecture_CarBook.Persistence/OnionArchitecture_CarBook.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/Context/" />
+  <Folder Name="/Presentation/">
+    <Project Path="OnionArchitecture_CarBook.WebApi/OnionArchitecture_CarBook.WebApi.csproj" />
+  </Folder>
+</Solution>
