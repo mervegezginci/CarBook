@@ -5,7 +5,6 @@
   <Folder Name="/Infrastructure/">
     <Project Path="OnionArchitecture_CarBook.Persistence/OnionArchitecture_CarBook.Persistence.csproj" />
   </Folder>
-  <Folder Name="/Infrastructure/Context/" />
   <Folder Name="/Presentation/">
     <Project Path="OnionArchitecture_CarBook.WebApi/OnionArchitecture_CarBook.WebApi.csproj" />
   </Folder>

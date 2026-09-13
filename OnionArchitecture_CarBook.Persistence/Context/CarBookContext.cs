@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnionArchitecture_CarBook.Domain.Entities;
 
-namespace OnionArchitecture_CarBook.Persistence
+namespace OnionArchitecture_CarBook.Persistence.Context
 {
     public class CarBookContext:DbContext
     {
