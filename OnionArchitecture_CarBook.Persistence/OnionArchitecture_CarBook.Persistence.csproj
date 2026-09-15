@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnionArchitecture_CarBook.Domain\OnionArchitecture_CarBook.Domain.csproj" />
+    <ProjectReference Include="..\OnionArchitecture_CarBook.Interfaces\OnionArchitecture_CarBook.Application.csproj" />
   </ItemGroup>
 
 </Project>
