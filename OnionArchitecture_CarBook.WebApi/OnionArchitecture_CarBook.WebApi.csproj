@@ -11,6 +11,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnionArchitecture_CarBook.Interfaces\OnionArchitecture_CarBook.Application.csproj" />
+    <ProjectReference Include="..\OnionArchitecture_CarBook.Persistence\OnionArchitecture_CarBook.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
