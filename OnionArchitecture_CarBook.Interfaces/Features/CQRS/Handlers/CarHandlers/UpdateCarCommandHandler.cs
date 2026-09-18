@@ -1,0 +1,32 @@
+﻿using OnionArchitecture_CarBook.Application.Features.CQRS.Command.CarCommands;
+using OnionArchitecture_CarBook.Application.Interfaces;
+using OnionArchitecture_CarBook.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.CarHandlers
+{
+    public class UpdateCarCommandHandler
+    {
+        public readonly IRepository<Car> _repository;
+        public UpdateCarCommandHandler(IRepository<Car> repository)
+        {
+            _repository = repository;
+        }
+        public async Task Handle(UpdateCarCommand command)
+        {
+            var values = await _repository.GetByIdAsync(command.CarId);
+            values.Fuel = command.Fuel;
+            values.Transmission = command.Transmission;
+            values.BigImageUrl = command.BigImageUrl;
+            values.CarId = command.CarId;
+            values.CoverImageUrl = command.CoverImageUrl;
+            values.Km = command.Km;
+            values.Luggage = command.Luggage;
+            values.Model = command.Model;
+            values.Seat = command.Seat;
+            await _repository.UpdateAsync(values);
+        }
+    }
+}
