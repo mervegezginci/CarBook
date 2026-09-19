@@ -1,7 +1,9 @@
-using OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
+using OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.CarHandlers;
+using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.CategoryHandlers;
+using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using OnionArchitecture_CarBook.Application.Interfaces;
 using OnionArchitecture_CarBook.Persistence.Context;
 using OnionArchitecture_CarBook.Persistence.Repositories;
@@ -40,6 +42,21 @@ builder.Services.AddScoped<GetCarByIdQueryHandler>();
 builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
+
+// Category Handlers
+builder.Services.AddScoped<GetCategoryQueryHandler>();
+builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
+builder.Services.AddScoped<CreateCategoryCommandHandler>();
+builder.Services.AddScoped<UpdateCategoryCommandHandler>();
+builder.Services.AddScoped<RemoveCategoryCommandHandler>();
+
+// Contact Handlers
+builder.Services.AddScoped<GetContactQueryHandler>();
+builder.Services.AddScoped<GetContactByIdQueryHandler>();
+builder.Services.AddScoped<CreateContactCommandHandler>();
+builder.Services.AddScoped<UpdateContactCommandHandler>();
+builder.Services.AddScoped<RemoveContactCommandHandler>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
