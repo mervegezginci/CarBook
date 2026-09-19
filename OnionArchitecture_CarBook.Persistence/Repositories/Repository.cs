@@ -23,7 +23,6 @@ namespace OnionArchitecture_CarBook.Persistence.Repositories
 
         public async Task<List<T>> GetAllAsync()
         {
-
             return await _context.Set<T>().ToListAsync();
         }
 

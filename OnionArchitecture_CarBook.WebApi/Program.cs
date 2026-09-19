@@ -1,12 +1,14 @@
+using OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
-using OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.CategoryHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using OnionArchitecture_CarBook.Application.Interfaces;
+using OnionArchitecture_CarBook.Application.Interfaces.CarInterfaces;
 using OnionArchitecture_CarBook.Persistence.Context;
 using OnionArchitecture_CarBook.Persistence.Repositories;
+using OnionArchitecture_CarBook.Persistence.Repositories.CarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<CarBookContext>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 
 // About Handlers
 builder.Services.AddScoped<GetAboutQueryHandler>();
@@ -42,6 +45,8 @@ builder.Services.AddScoped<GetCarByIdQueryHandler>();
 builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
+builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
+builder.Services.AddScoped<GetLast5CarsWithBrandQueryHandler>();
 
 // Category Handlers
 builder.Services.AddScoped<GetCategoryQueryHandler>();
