@@ -1,62 +1,64 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Command.CarCommands;
 using OnionArchitecture_CarBook.Application.Features.CQRS.Handlers.CarHandlers;
-using OnionArchitecture_CarBook.Application.Features.CQRS.Queries.CarQueries;
+using OnionArchitecture_CarBook.Application.Features.CQRS.Queries.BrandQueries;
 
-namespace OnionArchitecture_CarBook.WebApi.Controllers
+
+namespace OnionArchitecture_BrandBook.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        private readonly CreateCarCommandHandler _createCarCommandHandler;
-        private readonly GetCarByIdQueryHandler _getCarByIdQueryHandler;
-        private readonly GetCarQueryHandler _getCarQueryHandler;
-        private readonly UpdateCarCommandHandler _updateCarCommandHandler;
-        private readonly RemoveCarCommandHandler _removeCarCommandHandler;
+        private readonly CreateBrandCommandHandler _createBrandCommandHandler;
+        private readonly GetBrandByIdQueryHandler _getBrandByIdQueryHandler;
+        private readonly GetBrandQueryHandler _getBrandQueryHandler;
+        private readonly UpdateBrandCommandHandler _updateBrandCommandHandler;
+        private readonly RemoveBrandCommandHandler _removeBrandCommandHandler;
 
-        public BrandsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler)
+        public BrandsController(CreateBrandCommandHandler createBrandCommandHandler, GetBrandByIdQueryHandler getBrandByIdQueryHandler, GetBrandQueryHandler getBrandQueryHandler, UpdateBrandCommandHandler updateBrandCommandHandler, RemoveBrandCommandHandler removeBrandCommandHandler)
         {
-            _createCarCommandHandler = createCarCommandHandler;
-            _getCarByIdQueryHandler = getCarByIdQueryHandler;
-            _getCarQueryHandler = getCarQueryHandler;
-            _updateCarCommandHandler = updateCarCommandHandler;
-            _removeCarCommandHandler = removeCarCommandHandler;
+            _createBrandCommandHandler = createBrandCommandHandler;
+            _getBrandByIdQueryHandler = getBrandByIdQueryHandler;
+            _getBrandQueryHandler = getBrandQueryHandler;
+            _updateBrandCommandHandler = updateBrandCommandHandler;
+            _removeBrandCommandHandler = removeBrandCommandHandler;
         }
 
         [HttpGet]
-        public async Task<IActionResult> CarList()
+        public async Task<IActionResult> BrandList()
         {
-            var values = await _getCarQueryHandler.Handle();
+            var values = await _getBrandQueryHandler.Handle();
             return Ok(values);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCar(int id)
+        public async Task<IActionResult> GetBrand(int id)
         {
-            var value = await _getCarByIdQueryHandler.Handle(new GetCarByIdQuery(id));
+            var value = await _getBrandByIdQueryHandler.Handle(new GetBrandByIdQuery(id));
             return Ok(value);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCar(CreateCarCommand command)
+        public async Task<IActionResult> CreateBrand(CreateBrandCommand command)
         {
-            await _createCarCommandHandler.Handle(command);
+            await _createBrandCommandHandler.Handle(command);
             return Ok("Marka Bilgisi Eklendi");
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveCar(int id)
+        public async Task<IActionResult> RemoveBrand(int id)
         {
-            await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));
+            await _removeBrandCommandHandler.Handle(new RemoveBrandCommand(id));
             return Ok("Marka Bilgisi Silindi");
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCar(UpdateCarCommand command)
+        public async Task<IActionResult> UpdateBrand(UpdateBrandCommand command)
         {
-            await _updateCarCommandHandler.Handle(command);
+            await _updateBrandCommandHandler.Handle(command);
             return Ok("Marka Bilgisi Güncellendi");
         }
     }
