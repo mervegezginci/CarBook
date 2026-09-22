@@ -10,4 +10,11 @@
     <ProjectReference Include="..\OnionArchitecture_CarBook.Domain\OnionArchitecture_CarBook.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Mediator\Commands\" />
+    <Folder Include="Features\Mediator\Handlers\" />
+    <Folder Include="Features\Mediator\Results\" />
+    <Folder Include="Features\Mediator\Queries\" />
+  </ItemGroup>
+
 </Project>
