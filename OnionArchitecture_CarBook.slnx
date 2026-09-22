@@ -3,6 +3,9 @@
     <Project Path="OnionArchitecture_CarBook.Domain/OnionArchitecture_CarBook.Domain.csproj" />
     <Project Path="OnionArchitecture_CarBook.Interfaces/OnionArchitecture_CarBook.Application.csproj" Id="f1090812-6d07-4cd1-9e91-171942f94c17" />
   </Folder>
+  <Folder Name="/Frontends/">
+    <Project Path="OnionArchitecture_CarBook.WebUI/OnionArchitecture_CarBook.WebUI.csproj" Id="ea51992a-cb62-487c-88b6-341f47290234" />
+  </Folder>
   <Folder Name="/Infrastructure/">
     <Project Path="OnionArchitecture_CarBook.Persistence/OnionArchitecture_CarBook.Persistence.csproj" />
   </Folder>
