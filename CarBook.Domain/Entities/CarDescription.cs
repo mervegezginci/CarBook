@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CarBook.Domain.Entities
+{
+    public class CarDescription
+    {
+        public int CarDescriptionId { get; set; }
+        public int CarID { get; set; }
+        public Car Car { get; set; }
+        public string Details { get; set; }
+    }
+}
