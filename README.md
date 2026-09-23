@@ -106,5 +106,5 @@ CarBook/
 
 ## 📸 Ekran Görüntüleri
 
-> *(Buraya proje tamamlandıkça kullanıcı arayüzü ve Admin panelinden ekran görüntüleri ekleyebilirsiniz)*
+> *(Buraya proje tamamlandıkça kullanıcı arayüzü ve Admin panelinden ekran görüntüleri eklenecek)*
 
