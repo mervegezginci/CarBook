@@ -11,10 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Mediator\Commands\" />
-    <Folder Include="Features\Mediator\Handlers\" />
-    <Folder Include="Features\Mediator\Results\" />
-    <Folder Include="Features\Mediator\Queries\" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.12" />
   </ItemGroup>
 
 </Project>
