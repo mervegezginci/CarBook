@@ -1,0 +1,45 @@
+﻿using CarBook.Application.Features.Mediator.Queries.BlogQueries;
+using CarBook.Application.Features.Mediator.Results.BlogResults;
+using CarBook.Application.Interfaces.BlogInterfaces;
+using MediatR;
+
+namespace CarBook.Application.Features.Mediator.Handlers.BlogHandlers
+{
+    public class GetAllBlogsWithAuthorQueryHandler
+        : IRequestHandler<GetAllBlogsWithAuthorQuery,
+            List<GetAllBlogsWithAuthorQueryResult>>
+    {
+        private readonly IBlogRepository _repository;
+
+        public GetAllBlogsWithAuthorQueryHandler(IBlogRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<List<GetAllBlogsWithAuthorQueryResult>> Handle(
+            GetAllBlogsWithAuthorQuery request,
+            CancellationToken cancellationToken)
+        {
+            var values = _repository.GetAllBlogsWithAuthors();
+
+            return values.Select(x => new GetAllBlogsWithAuthorQueryResult
+            {
+                BlogID = x.BlogId,
+                Title = x.Title,
+
+                AuthorID = x.AuthorId,
+                AuthorName = x.Author.Name,
+                AuthorDescription = x.Author.Description,
+                AuthorImageUrl = x.Author.ImageUrl,
+
+                CategoryID = x.CategoryId,
+                CategoryName = x.Category.Name,
+
+                CoverImageUrl = x.CoverImageUrl,
+                CreatedDate = x.CreatedDate,
+
+                // Description = x.Description
+            }).ToList();
+        }
+    }
+}
