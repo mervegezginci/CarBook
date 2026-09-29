@@ -1,13 +1,47 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarBook.Dto.BlogDtos;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CarBook.WebUI.Controllers
 {
     public class BlogController : Controller
     {
-        public IActionResult Index()
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public BlogController(IHttpClientFactory httpClientFactory)
         {
-            ViewBag.v1 = "Hakkımızda";
-            ViewBag.v2 = "Bloglarımız";
+            _httpClientFactory = httpClientFactory;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            ViewBag.v1 = "Bloglar";
+            ViewBag.v2 = "Yazarlarımızın Blogları";
+
+            var client = _httpClientFactory.CreateClient();
+
+            var responseMessage = await client.GetAsync(
+                "https://localhost:7046/api/Blogs/GetAllBlogsWithAuthorsList");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+                var values = JsonConvert.DeserializeObject<
+                    List<ResultAllBlogsWithAuthorDto>>(jsonData);
+
+                return View(values);
+            }
+
+            return View(new List<ResultAllBlogsWithAuthorDto>());
+        }
+
+        public IActionResult BlogDetail(int id)
+        {
+            ViewBag.v1 = "Bloglar";
+            ViewBag.v2 = "Blog Detayı";
+            ViewBag.blogid = id;
+
             return View();
         }
     }

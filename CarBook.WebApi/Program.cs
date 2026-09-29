@@ -10,6 +10,8 @@ using CarBook.Persistence.Context;
 using CarBook.Persistence.Repositories;
 using CarBook.Persistence.Repositories.CarRepositories;
 using CarBook.Application.Services;
+using CarBook.Application.Interfaces.BlogInterfaces;
+using CarBook.Persistence.Repositories.BlogRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddScoped<CarBookContext>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
+builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 
 // About Handlers
 builder.Services.AddScoped<GetAboutQueryHandler>();
