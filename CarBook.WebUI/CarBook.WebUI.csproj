@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewComponents\BlogViewComponents\_BlogDetailTagCloudComponentPartial.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\carbook-master\.DS_Store" />
     <None Include="wwwroot\carbook-master\css\.DS_Store" />
     <None Include="wwwroot\carbook-master\css\bootstrap\.DS_Store" />
@@ -19,11 +23,6 @@
     <None Include="wwwroot\carbook-master\js\.DS_Store" />
     <None Include="wwwroot\carbook-master\scss\.DS_Store" />
     <None Include="wwwroot\carbook-master\scss\bootstrap\.DS_Store" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewComponents\NewFolder\" />
-    <Folder Include="Views\Shared\Components\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

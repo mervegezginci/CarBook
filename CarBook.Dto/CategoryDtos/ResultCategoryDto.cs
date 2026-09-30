@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarBook.Application.Features.CQRS.Results.CategoryResults
+namespace CarBook.Dto.CategoryDtos
 {
-    public class GetCategoryQueryResult
+    public class ResultCategoryDto
     {
         public int CategoryID { get; set; }
         public string Name { get; set; }
-
         public int BlogCount { get; set; }
     }
 }
