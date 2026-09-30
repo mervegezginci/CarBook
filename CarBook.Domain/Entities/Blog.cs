@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace CarBook.Domain.Entities
 {
@@ -15,5 +16,7 @@ namespace CarBook.Domain.Entities
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public string Description { get; set; }
+        public List<TagCloud> TagClouds { get; set; }
+
     }
 }
