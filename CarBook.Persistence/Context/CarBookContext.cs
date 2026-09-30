@@ -3,7 +3,7 @@ using CarBook.Domain.Entities;
 
 namespace CarBook.Persistence.Context
 {
-    public class CarBookContext:DbContext
+    public class CarBookContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,6 +28,7 @@ namespace CarBook.Persistence.Context
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<TagCloud> TagClouds { get; set; }
 
     }
 }
