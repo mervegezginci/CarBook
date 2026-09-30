@@ -1,0 +1,27 @@
+﻿@model GetBlogByIdDto
+
+<div class="col-md-8 ftco-animate">
+
+    <h2 class="mb-3">@Model.Title</h2>
+
+    <p>@Model.Description</p>
+
+    <p>
+        <img src="@Model.CoverImageUrl" alt="@Model.Title" class="img-fluid">
+    </p>
+
+    <!-- etiketler -->
+    @await Component.InvokeAsync("_BlogDetailCloudTagByBlogComponentPartial", new { id = ViewBag.blogid })
+
+    <!-- yazar hakkında -->
+    @await Component.InvokeAsync("_BlogDetailsAuthorAboutComponentPartial", new { id = ViewBag.blogid })
+
+    <!-- yorumlar -->
+    <div class="pt-5 mt-5">
+        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogid })
+
+        <!-- Yorum formu -->
+        @await Component.InvokeAsync("_AddCommentComponentPartial", new { id = ViewBag.blogid })
+    </div>
+
+</div> 
