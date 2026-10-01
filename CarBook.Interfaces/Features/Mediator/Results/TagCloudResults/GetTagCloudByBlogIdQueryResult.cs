@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CarBook.Application.Features.Mediator.Results.TagCloudResults
+{
+    public class GetTagCloudByBlogIdQueryResult
+    {
+        public int TagCloudID { get; set; }
+        public string Title { get; set; }
+        public int BlogID { get; set; }
+    }
+}

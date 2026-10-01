@@ -53,5 +53,12 @@ namespace CarBook.WebApi.Controllers
             return Ok("Etiket başarıyla güncellendi");
         }
 
+        [HttpGet("GetTagClodByBlogId")]
+        public async Task<IActionResult> GetTagClodByBlogId(int id)
+        {
+            var values = await _mediator.Send(new GetTagCloudByBlogIdQuery(id));
+            return Ok(values);
+        }
+
     }
 }

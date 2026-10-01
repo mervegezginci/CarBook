@@ -28,5 +28,11 @@ namespace CarBook.Persistence.Repositories.BlogRepositories
             var values = _carBookContext.Blogs.Include(x => x.Author).ToList();
             return values;
         }
+
+        public List<Blog> GetBlogByAuthorId(int id)
+        {
+            var values = _carBookContext.Blogs.Include(x => x.Author).Where(y => y.BlogId == id).ToList();
+            return values;
+        }
     }
 }
