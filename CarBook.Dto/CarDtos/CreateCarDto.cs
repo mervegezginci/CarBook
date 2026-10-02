@@ -1,13 +1,11 @@
-﻿using CarBook.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarBook.Application.Features.CQRS.Command.CarCommands
+namespace CarBook.Dto.CarDtos
 {
-    public class UpdateCarCommand
+    public class CreateCarDto
     {
-        public int CarId { get; set; }
         public int BrandID { get; set; }
         public string Model { get; set; }
         public string CoverImageUrl { get; set; }

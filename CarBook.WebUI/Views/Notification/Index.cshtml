@@ -1,0 +1,147 @@
+﻿@model List<ResultNotificationDto>
+
+@{
+    ViewData["Title"] = "Bildirimler";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+
+                            <div>
+                                <h4 class="card-title mb-1">
+                                    Bildirimler
+                                </h4>
+
+                                <p class="text-muted mb-0">
+                                    Tüm bildirimlerinizi buradan görüntüleyebilirsiniz.
+                                </p>
+                            </div>
+
+                            <span class="badge badge-primary">
+                                @Model.Count Bildirim
+                            </span>
+
+                        </div>
+
+
+                        @if (Model.Count == 0)
+                        {
+                            <div class="text-center py-5">
+
+                                <i class="mdi mdi-bell-off-outline font-size-24"></i>
+
+                                <p class="text-muted mt-2">
+                                    Henüz bildirim bulunmuyor.
+                                </p>
+
+                            </div>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                string notificationUrl = "#";
+
+                                if (item.Type == "Message")
+                                {
+                                    notificationUrl = "/Admin/Contact/Index";
+                                }
+                                else if (item.Type == "Comment")
+                                {
+                                    notificationUrl = "/Admin/Comment/Index";
+                                }
+                                else if (item.Type == "Reservation")
+                                {
+                                    notificationUrl = "/Admin/Reservation/Index";
+                                }
+
+
+                                <a href="@notificationUrl"
+                                   class="text-reset text-decoration-none">
+
+                                    <div class="media py-3 border-bottom">
+
+                                        <div class="avatar-xs mr-3">
+
+                                            @if (item.Type == "Message")
+                                            {
+                                                <span class="avatar-title bg-primary rounded-circle">
+                                                    <i class="mdi mdi-email-outline"></i>
+                                                </span>
+                                            }
+                                            else if (item.Type == "Comment")
+                                            {
+                                                <span class="avatar-title bg-info rounded-circle">
+                                                    <i class="mdi mdi-comment-outline"></i>
+                                                </span>
+                                            }
+                                            else if (item.Type == "Reservation")
+                                            {
+                                                <span class="avatar-title bg-success rounded-circle">
+                                                    <i class="mdi mdi-calendar-check-outline"></i>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="avatar-title bg-secondary rounded-circle">
+                                                    <i class="mdi mdi-bell-outline"></i>
+                                                </span>
+                                            }
+
+                                        </div>
+
+
+                                        <div class="media-body">
+
+                                            <div class="d-flex justify-content-between">
+
+                                                <h6 class="mt-0 mb-1">
+
+                                                    @item.Title
+
+                                                    @if (!item.IsRead)
+                                                    {
+                                                        <span class="badge badge-danger ml-2">
+                                                            Yeni
+                                                        </span>
+                                                    }
+
+                                                </h6>
+
+                                                <small class="text-muted">
+                                                    @item.CreatedDate.ToString("dd.MM.yyyy HH:mm")
+                                                </small>
+
+                                            </div>
+
+                                            <p class="text-muted mb-0">
+                                                @item.Description
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </a>
+                            }
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

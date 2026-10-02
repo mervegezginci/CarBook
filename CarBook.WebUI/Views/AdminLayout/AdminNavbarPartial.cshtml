@@ -1,0 +1,283 @@
+﻿<header id="page-topbar">
+    <div class="navbar-header">
+
+        <!-- SOL TARAF -->
+        <div class="d-flex align-items-left">
+
+            <!-- Mobil Menü -->
+            <button type="button"
+                    class="btn btn-sm mr-2 d-lg-none px-3 font-size-16 header-item waves-effect"
+                    id="vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+            <!-- Hızlı Ekle -->
+            <div class="dropdown d-none d-sm-inline-block">
+
+                <button type="button"
+                        class="btn header-item waves-effect"
+                        id="page-header-create-dropdown"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+
+                    <i class="mdi mdi-plus"></i>
+                    Yeni Ekle
+
+                    <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="/Admin/Car/CreateCar"
+                       class="dropdown-item notify-item">
+                        <i class="mdi mdi-car mr-2"></i>
+                        Yeni Araç
+                    </a>
+
+                    <a href="/Admin/Brand/CreateBrand"
+                       class="dropdown-item notify-item">
+                        <i class="mdi mdi-tag-outline mr-2"></i>
+                        Yeni Marka
+                    </a>
+
+                    <a href="/Admin/Blog/CreateBlog"
+                       class="dropdown-item notify-item">
+                        <i class="mdi mdi-post-outline mr-2"></i>
+                        Yeni Blog
+                    </a>
+
+                    <a href="/Admin/Service/CreateService"
+                       class="dropdown-item notify-item">
+                        <i class="mdi mdi-tools mr-2"></i>
+                        Yeni Hizmet
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ TARAF -->
+        <div class="d-flex align-items-center">
+
+            <!-- Arama -->
+            <div class="dropdown d-none d-sm-inline-block ml-2">
+
+                <button type="button"
+                        class="btn header-item noti-icon waves-effect"
+                        id="page-header-search-dropdown"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+
+                    <i class="mdi mdi-magnify"></i>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                     aria-labelledby="page-header-search-dropdown">
+
+                    <form class="p-3">
+                        <div class="form-group m-0">
+
+                            <div class="input-group">
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Ara..."
+                                       aria-label="Ara">
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary"
+                                            type="submit">
+
+                                        <i class="mdi mdi-magnify"></i>
+
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+            <!-- BİLDİRİMLER -->
+            <div class="dropdown d-inline-block">
+
+                <button type="button"
+                        class="btn header-item noti-icon waves-effect"
+                        id="page-header-notifications-dropdown"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+
+                    <i class="mdi mdi-bell-outline"></i>
+
+                    <span id="notificationCount"
+                          class="notification-count"
+                          style="display:none;">
+                        0
+                    </span>
+
+                </button>
+
+
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                     aria-labelledby="page-header-notifications-dropdown">
+
+                    <!-- Başlık -->
+                    <div class="p-3">
+
+                        <div class="row align-items-center">
+
+                            <div class="col">
+                                <h6 class="m-0">
+                                    Bildirimler
+                                </h6>
+                            </div>
+
+                            <div class="col-auto">
+
+                                <a href="/Notification/Index"
+                                   class="small">
+
+                                    Tümünü Gör
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SignalR Bildirimleri Buraya Gelecek -->
+                    <div id="notificationList"
+                         data-simplebar
+                         style="max-height: 230px;">
+
+                        <div id="noNotification"
+                             class="text-center p-4 text-muted">
+
+                            <i class="mdi mdi-bell-off-outline font-size-24"></i>
+
+                            <p class="mb-0 mt-2">
+                                Yeni bildirim bulunmuyor.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Alt Alan -->
+                    <div class="p-2 border-top">
+
+                        <a class="btn btn-sm btn-light btn-block text-center"
+                           href="/Notification/Index">
+
+                            <i class="mdi mdi-bell-outline mr-1"></i>
+                            Tüm Bildirimleri Gör
+
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- KULLANICI -->
+            <div class="dropdown d-inline-block ml-2">
+
+                <button type="button"
+                        class="btn header-item waves-effect"
+                        id="page-header-user-dropdown"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+
+                    <span class="d-none d-sm-inline-block">
+                        CarBook Admin
+                    </span>
+
+                    <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+
+                </button>
+
+
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <a class="dropdown-item d-flex align-items-center"
+                       href="/Admin/Profile/Index">
+
+                        <i class="mdi mdi-account-outline mr-2"></i>
+
+                        <span>Profilim</span>
+
+                    </a>
+
+
+                    <a class="dropdown-item d-flex align-items-center"
+                       href="/">
+
+                        <i class="mdi mdi-web mr-2"></i>
+
+                        <span>Siteye Git</span>
+
+                    </a>
+
+
+                    <div class="dropdown-divider"></div>
+
+
+                    <a class="dropdown-item d-flex align-items-center text-danger"
+                       href="/Login/Logout">
+
+                        <i class="mdi mdi-logout mr-2"></i>
+
+                        <span>Çıkış Yap</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<style>
+    #page-header-notifications-dropdown {
+        position: relative;
+        overflow: visible !important;
+    }
+
+    .notification-count {
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f1556c;
+        color: white;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 18px;
+        border-radius: 9px;
+        border: 2px solid white;
+        z-index: 10;
+    }
+</style>

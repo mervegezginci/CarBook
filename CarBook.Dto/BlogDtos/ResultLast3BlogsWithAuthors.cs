@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarBook.Dto.CarDtos
+namespace CarBook.Dto.BlogDtos
 {
     public class ResultLast3BlogsWithAuthors
     {

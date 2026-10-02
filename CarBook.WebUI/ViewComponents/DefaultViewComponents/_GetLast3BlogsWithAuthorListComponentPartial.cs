@@ -1,4 +1,4 @@
-﻿using CarBook.Dto.CarDtos;
+﻿using CarBook.Dto.BlogDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
