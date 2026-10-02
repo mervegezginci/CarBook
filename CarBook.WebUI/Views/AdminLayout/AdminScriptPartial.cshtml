@@ -1,0 +1,89 @@
+﻿<!-- jQuery  -->
+<script src="/Admin/vertical/assets/js/jquery.min.js"></script>
+<script src="/Admin/vertical/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/Admin/vertical/assets/js/metismenu.min.js"></script>
+<script src="/Admin/vertical/assets/js/waves.js"></script>
+<script src="/Admin/vertical/assets/js/simplebar.min.js"></script>
+
+<!-- App js -->
+<script src="/Admin/vertical/assets/js/theme.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("https://localhost:7046/notificationhub")
+        .withAutomaticReconnect()
+        .build();
+
+     connection.on("ReceiveNotification", function (title, message) {
+
+        const countElement =
+            document.getElementById("notificationCount");
+
+        let count = parseInt(countElement.innerText) || 0;
+
+    count++;
+    countElement.innerText = count;
+    countElement.style.display = "flex";
+
+
+        const notificationList =
+            document.getElementById("notificationList");
+
+        const noNotification =
+            document.getElementById("noNotification");
+
+        if (noNotification) {
+            noNotification.remove();
+        }
+
+
+        const notificationHtml = `
+            <a href="#" class="text-reset notification-item">
+                <div class="media">
+
+                    <div class="avatar-xs mr-3">
+                        <span class="avatar-title bg-primary rounded-circle">
+                            <i class="mdi mdi-bell-outline"></i>
+                        </span>
+                    </div>
+
+                    <div class="media-body">
+
+                        <h6 class="mt-0 mb-1">
+                            ${title}
+                        </h6>
+
+                        <p class="font-size-12 mb-1">
+                            ${message}
+                        </p>
+
+                        <p class="font-size-12 mb-0 text-muted">
+                            <i class="mdi mdi-clock-outline"></i>
+                            Şimdi
+                        </p>
+
+                    </div>
+
+                </div>
+            </a>
+        `;
+
+        notificationList.insertAdjacentHTML(
+            "afterbegin",
+            notificationHtml
+        );
+    });
+
+
+    connection.start()
+        .then(function () {
+            console.log("SignalR bağlantısı kuruldu.");
+        })
+        .catch(function (err) {
+            console.error("SignalR bağlantı hatası:", err);
+        });
+</script>

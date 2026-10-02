@@ -1,0 +1,80 @@
+﻿@using CarBook.Dto.CarDtos
+@model List<ResultCarWithBrandsDto>
+
+@{
+    ViewData["Title"] = "Araç Listesi";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Araç Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                            Sistemde kayıtlı araçların listesi
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Marka</th>
+                                        <th>Model</th>
+                                        <th>KM</th>
+                                        <th>Vites</th>
+                                        <th>Yakıt</th>
+                                        <th>Koltuk</th>
+                                        <th>Bagaj</th>
+                                        <th>Güncelle</th>
+                                        <th>Sil</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th>@item.CarId</th>
+                                            <td>@item.BrandName</td>
+                                            <td>@item.Model</td>
+                                            <td>@item.Km</td>
+                                            <td>@item.Transmission</td>
+                                            <td>@item.Fuel</td>
+                                            <td>@item.Seat</td>
+                                            <td>@item.Luggage</td>
+
+                                            <td>
+                                                <a href="/AdminCar/UpdateCar/@item.CarId"
+                                                   class="btn btn-warning">
+                                                    Güncelle
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <a href="/AdminCar/RemoveCar/@item.CarId"
+                                                   class="btn btn-danger">
+                                                    Sil
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <a href="/AdminCar/CreateCar"
+                           class="btn btn-primary mt-3">
+                            Yeni Araç Ekle
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
