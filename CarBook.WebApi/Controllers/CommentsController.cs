@@ -1,9 +1,11 @@
 ﻿using CarBook.Application.Features.Mediator.Commands.CommentCommands;
 using CarBook.Application.Features.RepositoryPattern;
 using CarBook.Domain.Entities;
+using CarBook.Persistence.Context;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarBook.WebApi.Controllers
 {
@@ -11,18 +13,33 @@ namespace CarBook.WebApi.Controllers
     [ApiController]
     public class CommentsController : ControllerBase
     {
+        private readonly CarBookContext _context;
         private readonly IGenericRepository<Comment> _commentsRepository;
         private readonly IMediator _mediator;
-        public CommentsController(IGenericRepository<Comment> commentsRepository, IMediator mediator)
+
+        public CommentsController(IGenericRepository<Comment> commentsRepository,IMediator mediator,CarBookContext context)
         {
             _commentsRepository = commentsRepository;
             _mediator = mediator;
+            _context = context;
         }
 
         [HttpGet]
         public IActionResult CommentList()
         {
-            var values = _commentsRepository.GetAll();
+            var values = _context.Comments
+                .Include(x => x.Blog)
+                .Select(x => new
+                {
+                    x.CommentID,
+                    x.Name,
+                    x.Description,
+                    x.CreatedDate,
+                    x.BlogID,
+                    BlogTitle = x.Blog.Title
+                })
+                .ToList();
+
             return Ok(values);
         }
 
