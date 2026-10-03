@@ -1,0 +1,81 @@
+﻿@model UpdateBlogDto
+
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Blog Güncelleme</h4>
+
+                        <p class="card-subtitle mb-4">
+                            Blog yazısına ait bilgileri aşağıdan güncelleyebilirsiniz.
+                        </p>
+
+                        <form method="post">
+
+                            <input type="hidden" asp-for="blogID" />
+
+                            <div class="form-group mb-3">
+                                <label>Blog Başlığı</label>
+                                <input type="text"
+                                       asp-for="title"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Yazar ID</label>
+                                <input type="number"
+                                       asp-for="authorID"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Kategori ID</label>
+                                <input type="number"
+                                       asp-for="categoryID"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Kapak Görseli URL</label>
+                                <input type="text"
+                                       asp-for="coverImageUrl"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Blog Açıklaması</label>
+                                <textarea asp-for="Description"
+                                          class="form-control"
+                                          rows="6"></textarea>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Oluşturulma Tarihi</label>
+                                <input type="date"
+                                       asp-for="createdDate"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-3">
+                                <button type="submit"
+                                        class="btn btn-success">
+                                    Değişiklikleri Kaydet
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
