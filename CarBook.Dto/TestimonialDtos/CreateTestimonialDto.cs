@@ -4,9 +4,8 @@ using System.Text;
 
 namespace CarBook.Dto.TestimonialDtos
 {
-    public class ResultTestimonialDto
+    public class CreateTestimonialDto
     {
-        public int TestimonialId { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Comment { get; set; }

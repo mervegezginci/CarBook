@@ -1,0 +1,72 @@
+﻿@model List<ResultSocialMediaDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Sosyal Medya Hesap Linkleri Yönetimi</h4>
+                        <p class="card-subtitle mb-4">
+                            Kullandığınız sosyal medya hesaplarına ait bilgileri yönetebileceğiniz sayfadır.
+                        </p>
+
+                        <a href="/Admin/AdminSocialMedia/CreateSocialMedia" class="btn btn-primary float-right mb-3">Yeni Sosyal Medya Girişi</a>
+
+
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            count++;
+                                            <tr>
+                                                <td>@count</td>
+                                                <td>@item.Name</td>
+                                                <td>
+                                                    <a href="/Admin/AdminSocialMedia/RemoveSocialMedia/@item.SocialMediaID"
+                                                       class="btn btn-outline-danger">Sil</a>
+                                                </td>
+                                                <td>
+                                                    <a href="/Admin/AdminSocialMedia/UpdateSocialMedia/@item.SocialMediaID"
+                                                       class="btn btn-outline-success">Güncelle</a>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                Henüz sosyal medya hesabı eklenmemiş.
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
