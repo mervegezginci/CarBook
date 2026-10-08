@@ -1,5 +1,6 @@
-﻿using CarBook.Dto.BrandDtos;
+using CarBook.Dto.BrandDtos;
 using CarBook.Dto.CarDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using System.Text;
 
 namespace CarBook.WebUI.Controllers
 {
+    [Authorize]
     public class AdminCarController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
