@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers
+namespace CarBook.Application.Features.CQRS.Handlers.BrandHandlers
 {
     public class CreateBrandCommandHandler
     {

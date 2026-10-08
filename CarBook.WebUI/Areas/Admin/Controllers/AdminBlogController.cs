@@ -1,6 +1,7 @@
-﻿using CarBook.Dto.AuthorDtos;
+using CarBook.Dto.AuthorDtos;
 using CarBook.Dto.BlogDtos;
 using CarBook.Dto.CategoryDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -8,6 +9,7 @@ using System.Text;
 
 namespace CarBook.WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     [Route("Admin/AdminBlog")]
     public class AdminBlogController : Controller

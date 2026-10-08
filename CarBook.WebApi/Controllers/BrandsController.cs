@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OnionArchitecture_BrandBook.Application.Features.CQRS.Handlers.BrandHandlers;
+using CarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarBook.Application.Features.CQRS.Command.CarCommands;
 using CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using CarBook.Application.Features.CQRS.Queries.BrandQueries;
 
 
-namespace OnionArchitecture_BrandBook.WebApi.Controllers
+namespace CarBook.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
