@@ -1,4 +1,4 @@
-﻿using CarBook.Application.Features.CQRS.Results.CarResults;
+using CarBook.Application.Features.CQRS.Results.CarResults;
 using CarBook.Application.Interfaces.CarInterfaces;
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,8 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
                 Luggage = x.Luggage,
                 Model = x.Model,
                 Seat = x.Seat,
-                Transmission = x.Transmission
+                Transmission = x.Transmission,
+                PricingAmount = x.CarPricings != null && x.CarPricings.Any() ? x.CarPricings.FirstOrDefault(p => p.PricingID == 1)?.Amount ?? (x.CarPricings.FirstOrDefault()?.Amount ?? 0) : 0
             }).ToList();
         }
     }

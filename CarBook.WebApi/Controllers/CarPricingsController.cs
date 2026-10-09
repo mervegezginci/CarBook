@@ -1,0 +1,94 @@
+using CarBook.Domain.Entities;
+using CarBook.Persistence.Context;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace CarBook.WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CarPricingsController : ControllerBase
+    {
+        private readonly CarBookContext _context;
+
+        public CarPricingsController(CarBookContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCarPricingListWithCar()
+        {
+            var values = await _context.CarPricings
+                .Include(x => x.Car)
+                .ThenInclude(x => x.Brand)
+                .Include(x => x.Pricing)
+                .Select(x => new
+                {
+                    CarPricingID = x.CarPricingID,
+                    CarID = x.CarID,
+                    BrandName = x.Car != null && x.Car.Brand != null ? x.Car.Brand.Name : "",
+                    Model = x.Car != null ? x.Car.Model : "",
+                    CoverImageUrl = x.Car != null ? x.Car.CoverImageUrl : "",
+                    PricingID = x.PricingID,
+                    PricingName = x.Pricing != null ? x.Pricing.Name : "",
+                    Amount = x.Amount
+                })
+                .ToListAsync();
+
+            return Ok(values);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCarPricing(int id)
+        {
+            var value = await _context.CarPricings
+                .Include(x => x.Car)
+                .ThenInclude(x => x.Brand)
+                .Include(x => x.Pricing)
+                .Where(x => x.CarPricingID == id)
+                .Select(x => new
+                {
+                    CarPricingID = x.CarPricingID,
+                    CarID = x.CarID,
+                    BrandName = x.Car != null && x.Car.Brand != null ? x.Car.Brand.Name : "",
+                    Model = x.Car != null ? x.Car.Model : "",
+                    CoverImageUrl = x.Car != null ? x.Car.CoverImageUrl : "",
+                    PricingID = x.PricingID,
+                    PricingName = x.Pricing != null ? x.Pricing.Name : "",
+                    Amount = x.Amount
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(value);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCarPricing(CarPricing carPricing)
+        {
+            _context.CarPricings.Add(carPricing);
+            await _context.SaveChangesAsync();
+            return Ok("Araç fiyatlandırması başarıyla eklendi");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateCarPricing(CarPricing carPricing)
+        {
+            _context.CarPricings.Update(carPricing);
+            await _context.SaveChangesAsync();
+            return Ok("Araç fiyatlandırması başarıyla güncellendi");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> RemoveCarPricing(int id)
+        {
+            var value = await _context.CarPricings.FindAsync(id);
+            if (value != null)
+            {
+                _context.CarPricings.Remove(value);
+                await _context.SaveChangesAsync();
+            }
+            return Ok("Araç fiyatlandırması silindi");
+        }
+    }
+}
