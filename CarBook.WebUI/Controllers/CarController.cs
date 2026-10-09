@@ -1,4 +1,4 @@
-﻿using CarBook.Dto.CarDtos;
+using CarBook.Dto.CarDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -13,10 +13,13 @@ namespace CarBook.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? locationID, int? dropOffLocationID, string? pickDate, string? offDate, string? timePick)
         {
             ViewBag.v1 = "Araçlarımız";
             ViewBag.v2 = "Aracınızı Seçiniz";
+            ViewBag.locationID = locationID;
+            ViewBag.pickDate = pickDate;
+            ViewBag.offDate = offDate;
 
             var client = _httpClientFactory.CreateClient();
 

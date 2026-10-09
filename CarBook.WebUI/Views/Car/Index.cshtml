@@ -1,4 +1,4 @@
-﻿@model List<CarBook.Dto.CarDtos.ResultCarWithBrandsDto>
+@model List<CarBook.Dto.CarDtos.ResultCarWithBrandsDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,6 +7,14 @@
 
 <section class="ftco-section bg-light">
     <div class="container">
+
+        @if (ViewBag.locationID != null || ViewBag.pickDate != null)
+        {
+            <div class="alert text-center mb-5 p-3 rounded" style="background-color: #e8f4fd; border: 1px solid #b6e0fe; color: #084298;">
+                <h5 class="mb-1" style="font-weight: 600;">Arama Sonucunuza Uygun Araçlar Listelendi</h5>
+                <p class="mb-0" style="font-size: 14px;">Belirlediğiniz alış/teslim tarihlerine ve konum kriterlerinize uygun araç seçenekleri aşağıda sunulmuştur.</p>
+            </div>
+        }
 
         <div class="row">
 
@@ -31,7 +39,7 @@
                                 <span class="cat">@item.BrandName</span>
 
                                 <p class="price ml-auto">
-                                    00 ₺
+                                    @item.PricingAmount.ToString("N0") ₺
                                     <span>/gün</span>
                                 </p>
                             </div>

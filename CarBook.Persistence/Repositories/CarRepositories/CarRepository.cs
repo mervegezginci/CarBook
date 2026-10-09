@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Domain.Entities;
 using CarBook.Persistence.Context;
@@ -24,7 +24,10 @@ namespace CarBook.Persistence.Repositories.CarRepositories
 
         public List<Car> GetCarsListWithBrands()
         {
-            var values = _context.Cars.Include(x => x.Brand).ToList();
+            var values = _context.Cars
+                .Include(x => x.Brand)
+                .Include(x => x.CarPricings)
+                .ToList();
             return values;
         }
         public List<Car> GetLast5CarsWithBrands()
